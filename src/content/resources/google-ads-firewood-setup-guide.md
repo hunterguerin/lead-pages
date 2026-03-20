@@ -2,7 +2,7 @@
 title: "Local Google Search Ads Setup Guide for Firewood Businesses"
 headline: "Get the Step-by-Step Google Ads Setup Guide for Local Firewood Businesses"
 subtitle: "Learn exactly how to create a Google Search campaign that targets people in your city searching for firewood - from account setup to your first live ad."
-pdfUrl: "https://drive.google.com/file/d/1Yn-OgVoGSwqZiOLVs6fQTgvUZh5P474S/view?usp=drivesdk"
+pdfUrl: "https://drive.google.com/file/d/1gOXR59SO1CSuVkxrVCtetoOZuBUK8Rj1/view?usp=drivesdk"
 valueProps:
   - "Set up a Google Ads Search campaign from scratch in under 30 minutes"
   - "Target only people in your delivery area with radius and city targeting"
