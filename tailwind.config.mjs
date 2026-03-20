@@ -5,11 +5,12 @@ export default {
     extend: {
       colors: {
         accent: {
-          DEFAULT: '#2563EB',  // Blue — change to your brand color
-          light: '#EFF6FF',
-          dark: '#1D4ED8',
+          DEFAULT: '#F94600',
+          light: '#FFF3EE',
+          dark: '#D83B00',
         },
-        dark: '#171717',
+        dark: '#0F3D19',
+        light: '#E9E4CF',
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],

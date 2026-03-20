@@ -35,105 +35,139 @@ const badge = `Free ${pages}-Page ${typeLabel}`;
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 </head>
-<body class="bg-white text-dark font-sans antialiased">
+<body class="bg-light text-dark font-sans antialiased">
 
   <!-- Hero -->
-  <section class="bg-gradient-to-b from-accent-light to-white">
-    <div class="max-w-3xl mx-auto px-6 pt-16 pb-12 text-center">
-      <span class="inline-block bg-accent/10 text-accent text-sm font-semibold px-4 py-1.5 rounded-full mb-6">
+  <section class="relative bg-dark overflow-hidden">
+    <!-- Subtle pattern overlay -->
+    <div class="absolute inset-0 opacity-[0.04]" style="background-image: radial-gradient(circle at 1px 1px, white 1px, transparent 0); background-size: 32px 32px;"></div>
+
+    <div class="relative max-w-4xl mx-auto px-6 pt-20 pb-24 text-center">
+      <!-- Badge -->
+      <span class="inline-flex items-center gap-2 bg-accent/15 text-accent text-sm font-bold px-5 py-2 rounded-full mb-8 border border-accent/20 backdrop-blur-sm">
+        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"/><path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clip-rule="evenodd"/></svg>
         {badge}
       </span>
-      <h1 class="text-4xl md:text-5xl font-extrabold leading-tight mb-4 text-dark">
+
+      <h1 class="text-4xl md:text-5xl lg:text-[3.5rem] font-extrabold leading-[1.1] mb-6 text-light tracking-tight">
         {headline}
       </h1>
-      <p class="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto mb-8">
+      <p class="text-lg md:text-xl text-light/70 max-w-2xl mx-auto leading-relaxed">
         {subtitle}
       </p>
+    </div>
 
-      <!-- Value Props -->
-      <div class="text-left max-w-md mx-auto space-y-3 mb-10">
-        {valueProps.map((prop) => (
-          <div class="flex items-start gap-3">
-            <span class="text-accent font-bold text-lg mt-0.5">&#10003;</span>
-            <span class="text-gray-700">{prop}</span>
-          </div>
-        ))}
-      </div>
+    <!-- Curved bottom edge -->
+    <div class="absolute bottom-0 left-0 right-0">
+      <svg viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full">
+        <path d="M0 60L1440 60L1440 0C1440 0 1080 60 720 60C360 60 0 0 0 0L0 60Z" fill="#E9E4CF"/>
+      </svg>
     </div>
   </section>
 
-  <!-- Form Section -->
-  <section class="max-w-3xl mx-auto px-6 -mt-4">
-    <div id="form-section" class="bg-white border border-gray-200 rounded-2xl shadow-lg p-8 md:p-10">
-      <h2 class="text-2xl font-bold text-center mb-2">Get Instant Access</h2>
-      <p class="text-gray-500 text-center mb-6">{previewDescription}</p>
+  <!-- Two-column: Value Props + Form -->
+  <section class="max-w-5xl mx-auto px-6 -mt-6 pb-16">
+    <div class="grid md:grid-cols-2 gap-8 items-start">
 
-      <!-- Lead Form -->
-      <form id="lead-form" class="space-y-4 max-w-sm mx-auto">
-        <div>
-          <label for="name" class="block text-sm font-medium text-gray-700 mb-1">First Name</label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            required
-            placeholder="Your first name"
-            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-accent outline-none transition"
-          />
+      <!-- Left: Value Props -->
+      <div class="pt-8">
+        <h2 class="text-sm font-bold text-accent uppercase tracking-widest mb-6">What you'll get</h2>
+        <div class="space-y-5">
+          {valueProps.map((prop, i) => (
+            <div class="flex items-start gap-4 group">
+              <div class="flex-shrink-0 w-10 h-10 bg-dark rounded-xl flex items-center justify-center shadow-md group-hover:scale-105 transition-transform">
+                <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                </svg>
+              </div>
+              <p class="text-dark/80 text-[15px] leading-relaxed pt-2">{prop}</p>
+            </div>
+          ))}
         </div>
-        <div>
-          <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            required
-            placeholder="you@example.com"
-            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-accent outline-none transition"
-          />
-        </div>
-        <button
-          type="submit"
-          class="w-full bg-accent hover:bg-accent-dark text-white font-semibold py-3.5 px-6 rounded-lg transition-colors text-lg cursor-pointer"
-        >
-          {ctaText}
-        </button>
-        <p class="text-xs text-gray-400 text-center">No spam. Unsubscribe anytime.</p>
-      </form>
 
-      <!-- Success / Resource Reveal (hidden by default) -->
-      <div id="resource-reveal" class="hidden text-center py-6">
-        <div class="inline-flex items-center justify-center w-16 h-16 bg-green-100 rounded-full mb-4">
-          <svg class="w-8 h-8 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-          </svg>
+        <!-- Social proof / trust -->
+        <div class="mt-8 flex items-center gap-3 text-dark/50 text-sm">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"/></svg>
+          No spam. Your info stays private.
         </div>
-        <h3 class="text-2xl font-bold mb-2">Here's your {typeLabel.toLowerCase()}!</h3>
-        <p class="text-gray-500 mb-6">Click below to view or download.</p>
-        <a
-          href={pdfUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="inline-flex items-center gap-2 bg-accent hover:bg-accent-dark text-white font-semibold py-3.5 px-8 rounded-lg transition-colors text-lg"
-        >
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-          </svg>
-          View & Download {typeLabel}
-        </a>
+      </div>
+
+      <!-- Right: Form Card -->
+      <div id="form-section" class="bg-white rounded-2xl shadow-xl border border-dark/5 p-8 md:p-10 relative">
+        <!-- Accent top bar -->
+        <div class="absolute top-0 left-8 right-8 h-1 bg-accent rounded-b-full"></div>
+
+        <h2 class="text-2xl font-bold text-center mb-2 pt-2">Get Instant Access</h2>
+        <p class="text-dark/50 text-center text-sm mb-8">{previewDescription}</p>
+
+        <!-- Lead Form -->
+        <form id="lead-form" class="space-y-5">
+          <div>
+            <label for="name" class="block text-sm font-semibold text-dark/70 mb-1.5">First Name</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              required
+              placeholder="Your first name"
+              class="w-full px-4 py-3.5 bg-light/50 border border-dark/10 rounded-xl focus:ring-2 focus:ring-accent/30 focus:border-accent outline-none transition text-dark placeholder:text-dark/30"
+            />
+          </div>
+          <div>
+            <label for="email" class="block text-sm font-semibold text-dark/70 mb-1.5">Email</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              required
+              placeholder="you@example.com"
+              class="w-full px-4 py-3.5 bg-light/50 border border-dark/10 rounded-xl focus:ring-2 focus:ring-accent/30 focus:border-accent outline-none transition text-dark placeholder:text-dark/30"
+            />
+          </div>
+          <button
+            type="submit"
+            class="w-full bg-accent hover:bg-accent-dark text-white font-bold py-4 px-6 rounded-xl transition-all text-lg cursor-pointer shadow-lg shadow-accent/25 hover:shadow-xl hover:shadow-accent/30 hover:-translate-y-0.5 active:translate-y-0"
+          >
+            {ctaText}
+          </button>
+        </form>
+
+        <!-- Success / Resource Reveal (hidden by default) -->
+        <div id="resource-reveal" class="hidden text-center py-6">
+          <div class="inline-flex items-center justify-center w-16 h-16 bg-dark/10 rounded-2xl mb-4">
+            <svg class="w-8 h-8 text-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+            </svg>
+          </div>
+          <h3 class="text-2xl font-bold mb-2">Here's your {typeLabel.toLowerCase()}!</h3>
+          <p class="text-dark/50 mb-6">Click below to view or download.</p>
+          <a
+            href={pdfUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 bg-accent hover:bg-accent-dark text-white font-bold py-4 px-8 rounded-xl transition-all text-lg shadow-lg shadow-accent/25 hover:shadow-xl hover:-translate-y-0.5"
+          >
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+            </svg>
+            View & Download {typeLabel}
+          </a>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- Sales Copy (from markdown body) -->
-  <section class="max-w-3xl mx-auto px-6 py-16">
-    <div class="prose prose-lg prose-gray max-w-none prose-headings:text-dark prose-h2:text-2xl prose-h3:text-xl prose-a:text-accent prose-strong:text-dark">
-      <slot />
+  <section class="bg-white border-y border-dark/5">
+    <div class="max-w-3xl mx-auto px-6 py-20">
+      <div class="prose prose-lg max-w-none prose-headings:text-dark prose-headings:font-extrabold prose-h2:text-2xl prose-h2:tracking-tight prose-h3:text-xl prose-p:text-dark/70 prose-p:leading-relaxed prose-a:text-accent prose-a:no-underline hover:prose-a:underline prose-strong:text-dark prose-strong:font-bold">
+        <slot />
+      </div>
     </div>
   </section>
 
   <!-- Footer -->
-  <footer class="border-t border-gray-100 py-8 text-center text-sm text-gray-400">
+  <footer class="py-8 text-center text-sm text-dark/30">
     &copy; {new Date().getFullYear()}
   </footer>
 
