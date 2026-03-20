@@ -49,9 +49,9 @@ export const POST: APIRoute = async ({ request }) => {
       status: 200,
       headers: { 'Content-Type': 'application/json' },
     });
-  } catch (err) {
-    console.error('Lead capture error:', err);
-    return new Response(JSON.stringify({ error: 'Server error' }), {
+  } catch (err: any) {
+    console.error('Lead capture error:', err?.message, err?.body, err?.code);
+    return new Response(JSON.stringify({ error: 'Server error', detail: err?.message || String(err) }), {
       status: 500,
       headers: { 'Content-Type': 'application/json' },
     });
